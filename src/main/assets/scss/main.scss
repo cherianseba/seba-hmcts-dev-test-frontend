@@ -1,1 +1,301 @@
 @use 'govuk-frontend' as *;
+
+.task-manager {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.task-manager__header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 30px;
+}
+
+.task-manager__header .govuk-heading-xl {
+  margin-bottom: 8px;
+}
+
+.task-manager__subtitle {
+  margin-bottom: 0;
+  color: #505a5f;
+}
+
+.task-manager__add-button {
+  flex: none;
+  margin-bottom: 3px;
+}
+
+.task-manager__add-button span {
+  padding-right: 6px;
+  font-size: 20px;
+}
+
+.task-manager__error {
+  margin-bottom: 24px;
+}
+
+.task-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.task-toolbar__search {
+  max-width: 360px;
+  background-color: #fff;
+}
+
+.task-toolbar__count {
+  margin: 0;
+}
+
+.task-list-panel {
+  overflow: hidden;
+  border: 1px solid #b1b4b6;
+  border-radius: 4px;
+  background: #fff;
+  color: #0b0c0c;
+}
+
+.task-list-panel__title {
+  margin: 0;
+  padding: 16px 20px;
+  border-bottom: 1px solid #b1b4b6;
+  color: #0b0c0c;
+  font-size: 19px;
+  font-weight: 700;
+}
+
+.task-table-scroll {
+  overflow-x: auto;
+}
+
+.task-table {
+  width: 100%;
+  min-width: 760px;
+  border-collapse: collapse;
+  color: #0b0c0c;
+  font-size: 16px;
+  text-align: left;
+}
+
+.task-table th,
+.task-table td {
+  padding: 16px 20px;
+  border-bottom: 1px solid #b1b4b6;
+  vertical-align: middle;
+}
+
+.task-table th {
+  background: #f3f2f1;
+  color: #0b0c0c;
+  font-size: 16px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.task-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.task-table tbody tr:hover {
+  background: #f8f8f8;
+}
+
+.task-table th:first-child,
+.task-table td:first-child {
+  padding-left: 20px;
+}
+
+.task-table th:last-child,
+.task-table td:last-child {
+  padding-right: 20px;
+}
+
+.task-table__details {
+  min-width: 280px;
+}
+
+.task-table__details strong,
+.task-table__details span {
+  display: block;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.task-table__details span {
+  color: #505a5f;
+}
+
+.task-table__date {
+  min-width: 120px;
+  white-space: nowrap;
+}
+
+.task-table__status {
+  max-width: 180px;
+  min-height: 38px;
+  padding: 5px 30px 5px 10px;
+  border: 2px solid #0b0c0c;
+  border-radius: 0;
+  background-color: #fff;
+  color: #0b0c0c;
+  cursor: pointer;
+  font: inherit;
+  font-size: 16px;
+}
+
+.task-table__status:focus,
+.task-table__action:focus {
+  outline: 3px solid #fd0;
+  outline-offset: 2px;
+}
+
+.task-table__actions {
+  min-width: 180px;
+  white-space: nowrap;
+}
+
+.task-table__action {
+  margin-right: 8px;
+  padding: 7px 12px;
+  border: 2px solid transparent;
+  border-radius: 3px;
+  color: #fff;
+  cursor: pointer;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.task-table__action--update {
+  border-color: #00703c;
+  background: #00703c;
+}
+
+.task-table__action--update:hover {
+  border-color: #005a30;
+  background: #005a30;
+}
+
+.task-table__action--delete {
+  border-color: #d4351c;
+  background: #d4351c;
+}
+
+.task-table__action--delete:hover {
+  border-color: #aa2a16;
+  background: #aa2a16;
+}
+
+.task-table__action:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.task-table__empty {
+  padding: 24px !important;
+  color: #505a5f;
+  text-align: center;
+}
+
+.task-dialog-backdrop {
+  position: fixed;
+  z-index: 1000;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow-y: auto;
+  padding: 24px;
+  background: rgb(9 30 66 / 54%);
+}
+
+.task-dialog {
+  width: min(100%, 620px);
+  max-height: calc(100vh - 48px);
+  overflow-y: auto;
+  padding: 28px;
+  border-radius: 6px;
+  background: #fff;
+  box-shadow: 0 12px 36px rgb(9 30 66 / 28%);
+}
+
+.task-dialog__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.task-dialog__header .govuk-heading-m {
+  margin-bottom: 0;
+  color: #172b4d;
+}
+
+.task-dialog__close {
+  padding: 0 5px;
+  border: 0;
+  background: transparent;
+  color: #44546f;
+  cursor: pointer;
+  font-size: 28px;
+  line-height: 1;
+}
+
+.task-dialog__fields {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.task-dialog__actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 26px;
+}
+
+.task-dialog__actions .govuk-button {
+  margin-bottom: 0;
+}
+
+@media (width <= 600px) {
+  .task-manager__header {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .task-manager__header .govuk-heading-xl {
+    font-size: 34px;
+  }
+
+  .task-toolbar {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .task-toolbar__search {
+    max-width: none;
+  }
+
+  .task-dialog-backdrop {
+    align-items: flex-start;
+    padding: 12px;
+  }
+
+  .task-dialog {
+    max-height: calc(100vh - 24px);
+    padding: 20px;
+  }
+
+  .task-dialog__fields {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+}

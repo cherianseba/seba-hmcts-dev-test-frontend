@@ -6,6 +6,7 @@
     "module": "commonjs",
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
+    "jsx": "react-jsx",
     "target": "ES2020",
     "strict": true,
     "noImplicitAny": true,

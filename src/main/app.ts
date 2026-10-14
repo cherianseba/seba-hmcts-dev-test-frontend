@@ -30,7 +30,7 @@ app.use((req, res, next) => {
 
 glob
   .sync(__dirname + '/routes/**/*.+(ts|js)')
-  .map(filename => require(filename))
+  .map(filename => require(path.resolve(filename)))
   .forEach(route => route.default(app));
 
 setupDev(app, developmentMode);
